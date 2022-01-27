@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "SMYdWBrRV3Na88ECQsxDAbH4WU+1bPee8lF9pjqvj/A=",
+  "Source": "keyvaultdemo",
+  "BasePath": "_content/keyvaultdemo",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
