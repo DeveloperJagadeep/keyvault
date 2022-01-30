@@ -37,7 +37,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet("secret/{secret}")]
     public IActionResult Get(string secret)
     {
-        var UserManagedClientId = "<PUT CLIENTID HERE>";
+        var UserManagedClientId = "763cd1ab-f703-459b-b1b0-38e988f1ccb3";
         DefaultAzureCredential defaultAzureCredential = new DefaultAzureCredential(new DefaultAzureCredentialOptions {ManagedIdentityClientId = UserManagedClientId});
         SecretClientOptions options = new SecretClientOptions()
         {
