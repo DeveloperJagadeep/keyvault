@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
@@ -111,7 +112,14 @@ public class TestController : ControllerBase
         string connectionString = getSecret("AppConfigConnection");
         builder.AddAzureAppConfiguration(connectionString);
         var config = builder.Build();
+        bool flag = config[".appconfig.featureflag/isTrue"].Contains("\"enabled\":true");
+        if(Convert.ToBoolean(flag)){
+            return Ok(config[key+"True"]);
+        }
+        else{
+            return Ok(config[key+"False"]);
+        }
 
-        return Ok(config[key]);
+        
     }
 }
