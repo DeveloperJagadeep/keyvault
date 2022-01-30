@@ -38,6 +38,7 @@ public class WeatherForecastController : ControllerBase
     public IActionResult Get(string secret)
     {
         var UserManagedClientId = "<PUT CLIENTID HERE>";
+        DefaultAzureCredential defaultAzureCredential = new DefaultAzureCredential(new DefaultAzureCredentialOptions {ManagedIdentityClientId = UserManagedClientId});
         SecretClientOptions options = new SecretClientOptions()
         {
             Retry =
@@ -48,8 +49,9 @@ public class WeatherForecastController : ControllerBase
             Mode = RetryMode.Exponential
          }
         };
-        var client = new SecretClient(new Uri("https://deepurgkeyvault.vault.azure.net/"),
-         new DefaultAzureCredential(new DefaultAzureCredentialOptions {ManagedIdentityClientId = UserManagedClientId}), options);
+        var client = new SecretClient(new Uri("https://deepukeyvault.vault.azure.net/"),
+                                        defaultAzureCredential,
+                                        options);
 
         KeyVaultSecret keyvaultsecret = client.GetSecret(secret);
 
